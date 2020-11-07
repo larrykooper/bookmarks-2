@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
 
   # The reason I excluded update from protect_from_forgery
   #  is that Rails thought the "save new" of fix a posting was a create,

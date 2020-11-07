@@ -1,0 +1,68 @@
+<div class="main">
+  <p class="help">
+  <%= @message %>
+</p>
+  <table>
+    <thead>
+      <tr>
+        <th class="header_name">
+          Name
+
+        </th>
+        <th>
+          Posting Date
+        </th>
+        <th>
+          Last Visited
+        </th>
+        <th>
+          Total Visits
+        </th>
+      </tr>
+    </thead>
+
+  <!--one bookmark -->
+    <tr class="bookmark">
+      <td class="bookmark_name"><%= link_to @bookmark.name, bookmark_path(@bookmark), remote: true, :class => "fat_link" %></td>
+      <td class="posting_date"><%= @bookmark.orig_posting_time.to_formatted_s(:ymd) %></td>
+      <td class="last_visited"><%= @bookmark.last_visit.to_formatted_s(:ymd) if @bookmark.last_visit %></td>
+      <td class="total_visits"><%= @bookmark.total_visits %></td>
+    </tr>
+    <!-- Extended description -->
+    <tr>
+      <td colspan="2">
+        <div class="extended_desc"><%= @bookmark.extended_desc  %></div>
+      </td>
+    </tr>
+
+    <!-- In Rotation and Private -->
+    <% if @bookmark.in_rotation  %>
+      <tr>
+        <td>
+          In-Rotation
+        </td>
+      </tr>
+    <% end %>
+    <% if @bookmark.private  %>
+      <tr>
+        <td>
+          Private
+        </td>
+      </tr>
+    <% end %>
+
+    <!-- tags -->
+    <tr>
+      <td class="bottom_line">
+        <div>
+          <% @bookmark.tags.each do |tag| %>
+            <%= display_tag_with_link(tag) %>
+          <% end %>
+        </div>
+      </td>
+      <!-- end of tags -->
+      <td colspan="3" class="rtside">
+      </td>
+    </tr>
+  </table>
+</div>
