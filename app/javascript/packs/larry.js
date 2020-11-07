@@ -5,6 +5,9 @@ $(document).ready(doThisOnDocumentReady);
 function doThisOnDocumentReady() {
   console.log("DOCUMENT READY");
 
+  // Letting user delete a bookmark, but forcing them to confirm
+  $("#delete_bookmark_button").on("click", confirmAndDelete);
+
   // Sorting the tags in the sidebar when the user asks for it
   $(".sorter").on("click", sortTagsServerSide);
 }
@@ -60,4 +63,19 @@ function putTagsInHtml(data) {
 
 function handleAjaxError(jqXHR, textStatus, errorThrown) {
   $('.alert').text(errorThrown);
+}
+
+
+function confirmAndDelete(event) {
+  var conf, result, theform;
+  console.log("in confirmAndDelete");
+  theform = $(".edit_bookmark")[0]
+  result = confirm("Are you sure?");
+  if (result) {
+    console.log("You clicked OK button!");
+    theform.submit();
+  } else {
+    console.log("You clicked Cancel button!");
+    $(".notice").text("Bookmark was not deleted.");
+  }
 }

@@ -235,6 +235,63 @@ a.rt:hover {
   padding-right: 3px;
 }
 
+
+/*  EDITING and fix-post PAGES */
+
+.edit_site fieldset {
+  border: 1px solid #94b057;
+  margin: 20px 5px 5px 5px;
+  padding: 5px 2px 24px 5px;
+}
+
+.edit_site input {
+  height: 23px;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.save_td {
+  padding-left: 20px;
+}
+
+.delete_td {
+  padding-left: 33px;
+}
+
+.delete_button_span {
+  padding-left: 39px;
+}
+
+.word_or {
+  padding-left: 20px;
+}
+
+.save_button, .delete_button {
+  width: 87px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 45px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.wider_column {
+  display: flex;
+  flex-direction: column;
+  flex: 8;
+}
+
+
 /*  LOGIN PAGE  */
 
 
