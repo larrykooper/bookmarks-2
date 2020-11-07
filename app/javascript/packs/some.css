@@ -3,13 +3,62 @@ body {
   margin: 0px;
 }
 
-.my_style {
-  color: blue; }
-
-.banner {
-  background-image: url('../images/bookmarklogo.jpg')
+a {
+  text-decoration: none;
+  background-repeat: no-repeat;
+  background-position: left center;
 }
 
+.banner {
+  height: 50px;
+  border-top: 4px solid #fab057;
+  border-bottom: 4px solid #fab057;
+  padding-bottom: 2px;
+  background-color: #f37108;
+  background-image: url('../images/bookmarklogo.jpg');
+  background-repeat: no-repeat;
+  clear: both;
+}
+
+div.banner_text {
+  padding-left: 122px;
+  padding-top: 25px;
+  color: #ffffff;
+}
+
+div.banner_right {
+  padding-top: 25px;
+  float: right;
+  padding-right: 0.5pc;
+}
+
+a.header:link {
+  color: #ffffff;
+  text-decoration: none;
+  background-image: url('../images/dot.jpg');
+  padding-left: 10px;
+}
+
+a.header:active {
+  color: #ffffff;
+  text-decoration: none;
+  background-image: url('../images/dot.jpg');
+  padding-left: 10px;
+}
+
+a.header:visited {
+  color: #ffffff;
+  text-decoration: none;
+  background-image: url('../images/dot.jpg');
+  padding-left: 10px;
+}
+
+a.header:hover {
+  text-decoration: none;
+  background-image: url('../images/dot.jpg');
+  color: #fab057;
+  padding-left: 10px;
+}
 
 /* TAGS SIDEBAR     */
 
@@ -44,6 +93,41 @@ div.main {
   padding-left: 0.5em;
   padding-top: 0.5ex;
 }
+
+
+.help {
+  border-bottom: 2px solid #fab057;
+  color: #617d24;
+  font-weight: bold;
+  padding-bottom: 2px;
+  background-image: url('../images/greendot.jpg');
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: 10px;
+}
+
+/* TABLE HEADER  */
+
+.header_name {
+  text-align: left;
+}
+
+a.header_links:link {
+  color: #df6807;
+}
+
+a.header_links:active {
+  color: #df6807;
+}
+
+a.header_links:visited {
+  color: #df6807;
+}
+
+a.header_links:hover {
+  color: #fab057;
+}
+
 
 /* EACH BOOKMARK  */
 
@@ -91,7 +175,7 @@ a.fat_link:link {
   color: #4a6043;
   text-decoration: none;
   display: inline-block;
-
+  background-image: url('../images/dot.jpg');
   background-repeat: no-repeat;
   background-position: left;
   padding-left: 10px;
@@ -101,7 +185,7 @@ a.fat_link:active {
   color: #4a6043;
   text-decoration: none;
   display: inline-block;
-
+  background-image: url('../images/dot.jpg');
   background-repeat: no-repeat;
   background-position: left;
   padding-left: 10px;
@@ -111,7 +195,7 @@ a.fat_link:visited {
   color: #4a6043;
   text-decoration: none;
   display: inline-block;
-
+  background-image: url('../images/dot.jpg');
   background-repeat: no-repeat;
   background-position: left;
   padding-left: 10px;
@@ -121,7 +205,7 @@ a.fat_link:hover {
   text-decoration: none;
   display: inline-block;
   color: #fab057;
-
+  background-image: url('../images/dot.jpg');
   background-repeat: no-repeat;
   background-position: left;
   padding-left: 10px;
