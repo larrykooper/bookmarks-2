@@ -1,0 +1,44 @@
+<div class="login-page">
+  <div class="wrap-login100">
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { id: "login_form" } ) do |f| %>
+      <span class="login100-form-title">
+        Welcome
+      </span>
+
+      <div class="wrap-input100">
+        <label class="email-label" for="email">Email</label>
+
+        <input autofocus="autofocus" autocomplete="email" type="email" value name="user[email]" id="user_email" class="input100">
+
+      </div>
+
+      <div class="wrap-input100">
+        <label class="password-label" for="password">Password</label>
+        <input autocomplete="current-password" type="password" name="user[password]" id="user_password" class="input100">
+
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="wrap-input100">
+
+          <label for="user_remember_me" class="remember">
+            <%= f.check_box :remember_me, class: "remember_box" %>
+            Remember me
+          </label>
+
+        </div>
+      <% end %>
+
+
+    <% end %>
+    <div class="actions">
+      <div class="wrap-login100-form-btn">
+        <div class="login100-form-bgbtn"></div>
+        <button type="submit" form="login_form" class="login100-form-btn">Login</button>
+      </div>
+    </div>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
