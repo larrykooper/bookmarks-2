@@ -1,0 +1,40 @@
+<div class="main fix_post">
+ <p class="help">Welcome, stormville.</p>
+  You have posted this URL before.<br>
+      Instructions: Make whatever changes you would like in EITHER your previous post or your new post.
+          Then click either Save Previous or Save New.<br>
+
+  <div class="previous_text">Here is your previous post:</div>
+
+  <fieldset class="chg">
+    <legend>Fix a posting:</legend>
+
+    <%= render partial: "editform", locals: {
+      tag_names: @previous_tag_names,
+      bookmark: @previous_post,
+      from: "fix_a_posting",
+      button_text: "save previous",
+      button_name: "save_previous",
+      action_url: "/bookmarks/#{@previous_post.id}"
+    } %>
+
+ </fieldset>
+ <br>
+ <br>
+ Here is your new post:<br>
+ <fieldset class="chg">
+   <legend>Fix a posting:</legend>
+
+     <%= render partial: "editform", locals: {
+      tag_names: @new_tag_names,
+      bookmark: @bookmark,
+      from: "fix_a_posting",
+      button_text: "save new",
+      button_name: "save_new",
+      action_url: "/bookmarks/#{@previous_post.id}"
+    } %>
+  </fieldset>
+
+
+
+</div>

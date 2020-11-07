@@ -1,0 +1,27 @@
+
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: bookmarks_dev
+  username: larry1mbp
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: bookmarks_test
+  username: larry1mbp
+
+production:
+  <<: *default
+  database: bookmarks_production
+  username: bookmarks
+  password: <%= ENV['BOOKMARKS_DATABASE_PASSWORD'] %>

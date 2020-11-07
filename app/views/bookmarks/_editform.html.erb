@@ -1,0 +1,62 @@
+ <%= form_for bookmark, url: action_url, id: "edit_bookmark" do |form| %>
+
+  <div class="row">
+    <div class="column">
+      <label class="firstCol" for="url">
+        <span>URL:</span>
+      </label>
+    </div>
+    <div class="wider_column">
+      <%= bookmark.url %>
+    </div>
+  </div>
+  <label class="firstCol" for="bookmark[name]">
+    <span>Name:</span>
+  </label>
+
+  <input type="text" name="bookmark[name]" class="post_form" value="<%= bookmark.name %>" required>
+
+  <label class="firstCol" for="extended_desc">
+    <span>Extended:</span>
+  </label>
+
+  <input type="text" class="post_form" name="bookmark[extended_desc]" value="<%= bookmark.extended_desc %>">
+    (optional)
+
+  <!--  tags  -->
+
+  <label class="firstCol">
+    <span>Tags:</span>
+  </label>
+
+  <input type="text" class="post_form" name="tags" value="<%= display_tags(tag_names) %>" required><nobr> (space separated)</nobr>
+
+  <div class="checkboxes">
+    <!--  In rotation  -->
+    <div class="checkbox">
+      <label for="cb_inrotation">
+        <%= form.check_box :in_rotation, class: "post_box"  %>
+        In Rotation
+      </label> -- Check here if you would like to regularly visit this site<br /><br />
+    </div>
+    <!--  Private -->
+    <div class="checkbox">
+      <label for="cb_private">
+        <%= form.check_box :private, class: "post_box" %>
+        Private
+      </label> -- Do not display this bookmark to other users<br /><br />
+    </div>
+  </div>
+
+  <input type="hidden" name="oldtagstring" value="<%= display_tags(tag_names) %>">
+  <input type=submit name="<%= button_name %>" value='<%= button_text %>' class="save_button">
+
+  <% if from == "edit" %>
+    <span class="word_or"> or </span>
+    <span class="delete_button_span">
+      <button type="button" class="delete_button" id="delete_bookmark_button">delete</button>
+    </span>
+
+   <% end %>
+
+  <% end %>

@@ -1,0 +1,29 @@
+<%= render "bookmarks/tags_sidebar" %>
+
+<%= render "bookmarks/pagination" %>
+
+<%= render "shared/notice_alert" %>
+
+<div class="main">
+
+<p class="help">
+  <%= @message %>
+</p>
+  <div class="my_style"> the fox, the fox, the brown fox  </div>
+
+
+
+    <p class="backim">While Dickinson was a prolific writer, her only publications during her lifetime were 10 of her nearly 1,800 poems, and one letter.[4] The poems published then were usually edited significantly to fit conventional poetic rules. Her poems were unique to her era. They contain short lines, typically lack titles, and often use slant rhyme as well as unconventional capitalization and punctuation.[5] Many of her poems deal with themes of death and immortality, two recurring topics in letters to her friends, and also explore aesthetics, society, nature and spirituality.[6]</p>
+
+  <table border="0">
+    <%= render "bookmarks/table_header" %>
+    <tbody>
+
+      <% @bookmarks.each do |bookmark| %>
+
+        <%= render partial: "bookmarks/bookmark", locals: {bookmark: bookmark} %>
+
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,18 @@
+<div class="main edit_site">
+  <p class="help">Welcome, stormville.</p>
+  <fieldset class="chg">
+    <legend>Edit this bookmark:</legend>
+
+    <%= render "shared/notice_alert" %>
+
+    <%= render partial: "editform", locals: {
+      tag_names: @tag_names,
+      bookmark: @bookmark,
+      from: "edit",
+      button_text: "save",
+      button_name: "save_it",
+      action_url: "/bookmarks/#{@bookmark.id}"
+    } %>
+
+  </fieldset>
+</div>

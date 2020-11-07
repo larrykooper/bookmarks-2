@@ -1,0 +1,16 @@
+<div class="tags_sidebar <%= @displaying %>">
+  <div class="sidebar_title">All tags</div>
+
+  <div class='sidebar_title'>
+    sort by <span class="sorter" id="alpha">alpha</span> | <span class="sorter bolder" id="freq">freq</span>
+
+  </div>
+  <div id="all-the-tags">
+    <% @tags.each do |tag| %>
+      <div class="tag">
+        <%= tag.count %>
+        <%= link_to tag.name, bookmarks_path(:tags => tag.id) %>
+      </div>
+    <% end %>
+  </div>
+</div>

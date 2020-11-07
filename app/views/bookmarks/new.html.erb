@@ -1,0 +1,69 @@
+<div class="main post-site">
+  <p class="help">Welcome, stormville.</p>
+  <fieldset class="chg">
+    <legend>Post a site:</legend>
+
+    <%= form_with scope: :bookmark, url: bookmarks_path, local: true, id: "new_bookmark" do |form| %>
+
+      <label class="firstCol" for="url">
+        <span>URL:</span>
+      </label>
+
+      <input type="text" class="post_form url" name="bookmark[url]" value="<%= @url %>" required>
+      <div class="explanation">Example: https://www.mysite.com</div>
+
+      <label class="firstCol" for="name">
+        <span>Name:</span>
+      </label>
+      <input type="text" id="titleField" class="post_form" name="bookmark[name]" value="<%= @name %>" required>
+
+      <div class="explanation">Title of the site or name you wish to use for it</div>
+
+      <label class="firstCol" for="extended_desc">
+        <span>Extended:</span>
+      </label>
+
+      <input type="text" class="post_form" name="bookmark[extended_desc]"> (optional)
+
+      <div class="explanation">Optional extended description of the site</div>
+
+      <label class="firstCol" for="tags">
+        <span>Tags:</span>
+      </label>
+
+      <input id="tagEntry" type="text" class="post_form" name="tags" size=80 required> (space separated)
+
+      <div class="explanation">Keywords you would like to use to categorize the site</div>
+      <div class="checkboxes">
+
+        <!-- in rotation  -->
+        <div class="checkbox">
+          <label for="in-rotation">
+            <%= form.check_box :in_rotation, class: "post_box"  %>
+            In Rotation
+          </label>
+          -- Check here if you would like to regularly visit this site
+        </div>
+
+        <!--  private  -->
+        <div class="checkbox private">
+          <%= form.check_box :private, class: "post_box" %>
+          <label for="private">Private</label> -- Do not display this bookmark to other users
+        </div>
+      </div>
+
+      <input type="hidden" name="submit_type" value="save">
+      <img src="<%= asset_pack_path 'images/save.jpg' %>" />
+
+      <!--
+      <input type=image src="../images/save.jpg" align="absmiddle" name="submit"> -->
+
+    <% end %>
+  </fieldset>
+  <div id="searchTags">
+    Search tags:
+    <input id="tagSearch" type="text" name="tagSearch">
+    (beginning of tag only)
+  </div>
+</div>
+
