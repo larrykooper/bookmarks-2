@@ -6,7 +6,7 @@ function doThisOnDocumentReady() {
   console.log("DOCUMENT READY");
 
   // Letting user delete a bookmark, but forcing them to confirm
-  $("#delete_bookmark_button").on("click", confirmAndDelete);
+  $(document).on("click", ".delete_button_span", confirmAndDelete);
 
   // Sorting the tags in the sidebar when the user asks for it
   $(".sorter").on("click", sortTagsServerSide);
