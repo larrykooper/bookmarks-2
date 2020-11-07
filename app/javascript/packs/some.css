@@ -1,3 +1,8 @@
+body {
+  font-family: Verdana, Arial, sans-serif;
+  margin: 0px;
+}
+
 .my_style {
   color: blue; }
 
@@ -79,3 +84,71 @@ th {
   border-bottom: 1px solid #fab057;
   text-align: left;
 }
+
+/* GENERAL LINKS */
+
+a.fat_link:link {
+  color: #4a6043;
+  text-decoration: none;
+  display: inline-block;
+
+  background-repeat: no-repeat;
+  background-position: left;
+  padding-left: 10px;
+}
+
+a.fat_link:active {
+  color: #4a6043;
+  text-decoration: none;
+  display: inline-block;
+
+  background-repeat: no-repeat;
+  background-position: left;
+  padding-left: 10px;
+}
+
+a.fat_link:visited {
+  color: #4a6043;
+  text-decoration: none;
+  display: inline-block;
+
+  background-repeat: no-repeat;
+  background-position: left;
+  padding-left: 10px;
+}
+
+a.fat_link:hover {
+  text-decoration: none;
+  display: inline-block;
+  color: #fab057;
+
+  background-repeat: no-repeat;
+  background-position: left;
+  padding-left: 10px;
+}
+
+a.rt:link {
+  color: #4a6043;
+  text-decoration: none;
+  padding-right: 3px;
+}
+
+a.rt:active {
+  color: #c65c06;
+  text-decoration: none;
+  padding-right: 3px;
+}
+
+a.rt:visited {
+  color: #c65c06;
+  text-decoration: none;
+  padding-right: 3px;
+}
+
+a.rt:hover {
+  text-decoration: none;
+  color: #fab057;
+  padding-right: 3px;
+}
+
+
