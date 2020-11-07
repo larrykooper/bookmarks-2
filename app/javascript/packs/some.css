@@ -1,0 +1,81 @@
+.my_style {
+  color: blue; }
+
+.banner {
+  background-image: url('../images/bookmarklogo.jpg')
+}
+
+
+/* TAGS SIDEBAR     */
+
+div.tags_sidebar {
+  width: 14%;
+  height: 100%;
+  background-color: #95b058;
+  margin-left: 0.5em;
+  padding-top: 40px;
+  padding-left: 1em;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  float: right;
+  font-size: 80%;
+}
+
+.sidebar_title {
+  font-size: 120%;
+  margin-bottom: 0.5pc;
+}
+
+.bolder {
+  font-weight: bolder;
+}
+
+/* MAIN  */
+
+div.main {
+  margin-left: 10px;
+  margin-right: 5px;
+  padding-bottom: 0.5pc;
+  padding-left: 0.5em;
+  padding-top: 0.5ex;
+}
+
+/* EACH BOOKMARK  */
+
+td.bookmark_name {
+  width: 59%;
+}
+
+td.posting_date {
+  width: 13%;
+}
+
+td.last_visited {
+  width: 13%;
+}
+
+td.total_visits {
+  width: 13%;
+  text-align: right;
+}
+
+.extended_desc {
+  margin-top: 10px;
+}
+
+.bottom_line {
+  border-bottom: 1px solid #94b057;
+}
+
+.rtside {
+  padding-right: 0px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  border-bottom: 1px solid #94b057;
+  text-align: right;
+}
+
+th {
+  border-bottom: 1px solid #fab057;
+  text-align: left;
+}
