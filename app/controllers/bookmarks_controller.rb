@@ -50,7 +50,6 @@ class BookmarksController < ApplicationController
     if params[:name]
       @bookmark.name  = params[:name]
     end
-
   end
 
   def edit
