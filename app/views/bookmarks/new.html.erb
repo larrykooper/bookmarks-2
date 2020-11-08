@@ -55,15 +55,16 @@
       <input type="hidden" name="submit_type" value="save">
       <img src="<%= asset_pack_path 'media/images/save.jpg' %>" />
 
-      <!--
-      <input type=image src="../images/save.jpg" align="absmiddle" name="submit"> -->
+      <!--    <input type=image src="../images/save.jpg" align="absmiddle" name="submit"> -->
 
     <% end %>
   </fieldset>
-  <div id="searchTags">
+
+  <!-- AUTOCOMPLETE FOR TAGS   -->
+
+  <div id="searchTags" class="autocomplete">
     Search tags:
-    <input id="tagSearch" type="text" name="tagSearch">
+    <input id="tagSearch" type="text" name="tagSearch" placeholder="tag">
     (beginning of tag only)
   </div>
 </div>
-

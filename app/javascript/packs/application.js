@@ -8,6 +8,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("packs/larry.js")
+require("packs/autocomplete.js")
 
 require.context('../images', true)
 
@@ -21,5 +22,6 @@ require.context('../images', true)
 
 import('../stylesheets/application')
 import('./some')
+import('./autocomp')
 
 console.log("I am here in application.js")
