@@ -4,10 +4,6 @@
   display: inline-block;
   box-sizing: border-box;
 }
-input {
-  background-color: #f1f1f1;
-  padding: 10px;
-}
 
 input[type=submit] {
   background-color: DodgerBlue;

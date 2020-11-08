@@ -270,6 +270,13 @@ a.rt:hover {
   width: 87px;
 }
 
+.delete_button {
+  background-color: red;
+  height: 23px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
 .row {
   display: flex;
   flex-direction: row;
@@ -550,6 +557,8 @@ legend {
   font-size: 14px;
   margin-bottom: 5px;
   box-sizing: border-box;
+  background-color: #f1f1f1;
+  padding: 10px;
 }
 
 label > span {
