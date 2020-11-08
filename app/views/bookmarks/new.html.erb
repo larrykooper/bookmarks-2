@@ -5,6 +5,7 @@
 
     <%= form_with scope: :bookmark, url: bookmarks_path, local: true, id: "new_bookmark" do |form| %>
 
+      <!--  URL of bookmark -->
       <label class="firstCol" for="url">
         <span>URL:</span>
       </label>
@@ -12,6 +13,7 @@
       <input type="text" class="post_form url" name="bookmark[url]" value="<%= @url %>" required>
       <div class="explanation">Example: https://www.mysite.com</div>
 
+      <!-- NAME  -->
       <label class="firstCol" for="name">
         <span>Name:</span>
       </label>
@@ -19,6 +21,7 @@
 
       <div class="explanation">Title of the site or name you wish to use for it</div>
 
+      <!-- EXTENDED DESCRIPTION   -->
       <label class="firstCol" for="extended_desc">
         <span>Extended:</span>
       </label>
@@ -27,6 +30,7 @@
 
       <div class="explanation">Optional extended description of the site</div>
 
+      <!--  TAGS INPUT   -->
       <label class="firstCol" for="tags">
         <span>Tags:</span>
       </label>
@@ -34,6 +38,8 @@
       <input id="tagEntry" type="text" class="post_form" name="tags" size=80 required> (space separated)
 
       <div class="explanation">Keywords you would like to use to categorize the site</div>
+       <!-- End of tags input    -->
+
       <div class="checkboxes">
 
         <!-- in rotation  -->
@@ -60,7 +66,6 @@
   </fieldset>
 
   <!-- AUTOCOMPLETE FOR TAGS   -->
-
   <div id="searchTags" class="autocomplete">
     Search tags:
     <input id="tagSearch" type="text" name="tagSearch" placeholder="tag">
