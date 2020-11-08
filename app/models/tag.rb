@@ -80,6 +80,7 @@ class Tag < ApplicationRecord
         end
       end
     end
+    # Add rows in bookmarks_tags
     tag_ids.each do |tag_id|
       bt = BookmarksTag.new(bookmark_id: bookmark.id, tag_id: tag_id)
       bt.save!

@@ -5,19 +5,22 @@
 
     <%= form_with scope: :bookmark, url: bookmarks_path, local: true, id: "new_bookmark" do |form| %>
 
+    <% if @bookmark.errors.any?   %>
+      Please use a valid URL.
+    <%  end %>
       <!--  URL of bookmark -->
       <label class="firstCol" for="url">
         <span>URL:</span>
       </label>
 
-      <input type="text" class="post_form url" name="bookmark[url]" value="<%= @url %>" required>
+      <input type="text" class="post_form url" name="bookmark[url]" value="<%= @bookmark.url %>" required>
       <div class="explanation">Example: https://www.mysite.com</div>
 
       <!-- NAME  -->
       <label class="firstCol" for="name">
         <span>Name:</span>
       </label>
-      <input type="text" id="titleField" class="post_form" name="bookmark[name]" value="<%= @name %>" required>
+      <input type="text" id="titleField" class="post_form" name="bookmark[name]" value="<%= @bookmark.name %>" required>
 
       <div class="explanation">Title of the site or name you wish to use for it</div>
 

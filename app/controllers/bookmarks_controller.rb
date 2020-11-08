@@ -41,17 +41,16 @@ class BookmarksController < ApplicationController
   end
 
   def new
+    @bookmark = Bookmark.new
     # Populate fields if bookmarklet has been used
     if params[:url]
-      @url = params[:url]
-    else
-      @url = ""
+      @bookmark.url  = params[:url]
     end
+
     if params[:name]
-      @name = params[:name]
-    else
-      @name = ""
+      @bookmark.name  = params[:name]
     end
+
   end
 
   def edit
@@ -66,11 +65,15 @@ class BookmarksController < ApplicationController
       tags = params[:tags]
       @bookmark.user_id = current_user.id
       @bookmark.orig_posting_time = Time.now
-      ActiveRecord::Base.transaction do
-        @bookmark.save!
-        Tag.save_tags(tags, @bookmark)
+      if @bookmark.valid?
+        ActiveRecord::Base.transaction do
+          @bookmark.save!
+          Tag.save_tags(tags, @bookmark)
+        end
+        redirect_to bookmarks_path
+      else
+        render 'new'
       end
-      redirect_to bookmarks_path
     else   # User has posted same bookmark before; go into "fix a post" mode
       @previous_post = Bookmark.find(existing)
       @previous_tag_names = @previous_post.tags.map(&:name)

@@ -2,6 +2,9 @@ class Bookmark < ApplicationRecord
   belongs_to :user
   has_many :user_visits
 
+  validates :url, :name, presence: true
+  validates :url, format: { with: /\Ahttp/, message: "must be a valid URL"    }
+
   def last_visit
     uv = user_visits.order("visit_timestamp DESC").first
     uv.visit_timestamp if uv
