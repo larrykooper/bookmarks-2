@@ -1,5 +1,7 @@
 console.log("I am here in autocomplete.js")
 
+// Credit: https://www.w3schools.com/howto/howto_js_autocomplete.asp
+
 $(document).on('turbolinks:load', function(event) {
   console.log("turbo load");
   if ($("#tagSearch").length) {
