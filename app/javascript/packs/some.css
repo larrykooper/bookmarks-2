@@ -510,6 +510,8 @@ a.rt:hover {
   padding-top: 115px;
 }
 
+/* POST A SITE PAGE    */
+
 .post-site label {
   color: #617d24;
   font-weight: bold;
@@ -576,5 +578,9 @@ label > span {
 
 #searchTags {
     font-weight: bold
+}
+
+.post-site input.save_new_button {
+  margin-left: 11%;
 }
 
