@@ -1,16 +1,12 @@
 console.log("I am here in larry.js")
 
-$(document).ready(doThisOnDocumentReady);
+// REGISTER EVENT LISTENERS
 
-function doThisOnDocumentReady() {
-  console.log("DOCUMENT READY");
+// Letting user delete a bookmark, but forcing them to confirm
+$(document).on("click", ".delete_button_span", confirmAndDelete);
 
-  // Letting user delete a bookmark, but forcing them to confirm
-  $(document).on("click", ".delete_button_span", confirmAndDelete);
-
-  // Sorting the tags in the sidebar when the user asks for it
-  $(".sorter").on("click", sortTagsServerSide);
-}
+// Sorting the tags in the sidebar when the user asks for it
+$(document).on("click", ".sorter", sortTagsServerSide);
 
 // SORTING THE TAGS
 
@@ -65,6 +61,7 @@ function handleAjaxError(jqXHR, textStatus, errorThrown) {
   $('.alert').text(errorThrown);
 }
 
+// "ARE YOU SURE YOU WANT TO DELETE?"
 
 function confirmAndDelete(event) {
   var conf, result, theform;
