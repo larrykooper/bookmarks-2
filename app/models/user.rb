@@ -4,7 +4,7 @@ class User < ApplicationRecord
   #   :recoverable, :rememberable, :validatable
   # Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable,
+  devise :database_authenticatable, :registerable,
          :rememberable, :validatable
 
   has_many :user_visits
