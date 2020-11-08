@@ -298,9 +298,7 @@ a.rt:hover {
   flex: 8;
 }
 
-
 /*  LOGIN PAGE  */
-
 
 .login-page {
   width: 100%;
@@ -313,7 +311,7 @@ a.rt:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   padding: 15px;
   background: #f2f2f2;
   font-weight: 400;
