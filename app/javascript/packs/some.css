@@ -547,6 +547,7 @@ legend {
   height: 23px;
   font-size: 14px;
   margin-bottom: 5px;
+  box-sizing: border-box;
 }
 
 label > span {

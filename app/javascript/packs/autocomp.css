@@ -1,10 +1,8 @@
-
-* { box-sizing: border-box; }
-
 .autocomplete {
   /*the container must be positioned relative:*/
   position: relative;
   display: inline-block;
+  box-sizing: border-box;
 }
 input {
   background-color: #f1f1f1;
@@ -15,6 +13,11 @@ input[type=submit] {
   background-color: DodgerBlue;
   color: #fff;
 }
+
+.post-site input[type=image] {
+  box-sizing: content-box;
+}
+
 .autocomplete-items {
   position: absolute;
   border: 1px solid #d4d4d4;
