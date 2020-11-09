@@ -22,10 +22,11 @@ function sortTagsServerSide(event) {
   otherElem.addClass("bolder");
   // Figure out which page called us
   parent = orderElem.closest(".tags_sidebar");
-  if (parent.hasClass("bookmarks")) {
-    page = "bookmarks";
-  } else {
+
+  if (parent.hasClass("in_rotation")) {
     page = "in_rotation";
+  } else {
+    page = "bookmarks";
   }
   // Ajax call
   $.ajax({
