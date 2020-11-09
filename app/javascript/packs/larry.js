@@ -50,7 +50,7 @@ function putTagsInHtml(data) {
     var oneTagHtml = `
       <div class="tag">
         ${count}
-        <a href="bookmarks/tags='${id}'">${name}</a>
+        <a href="bookmarks?tags=${id}">${name}</a>
       </div>
     `;
     place.append(oneTagHtml);
