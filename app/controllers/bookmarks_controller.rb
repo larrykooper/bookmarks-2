@@ -35,7 +35,7 @@ class BookmarksController < ApplicationController
 
   def show
     @bookmark = Bookmark.find(params[:id])
-    @user_visit = UserVisit.new(user_id: 1, visit_timestamp: Time.now, bookmark_id: params[:id])
+    @user_visit = UserVisit.new(user_id: current_user.id, visit_timestamp: Time.now, bookmark_id: params[:id])
     @user_visit.save
     redirect_to @bookmark.url
   end

@@ -5,7 +5,7 @@ class SpecialsController < ApplicationController
   def vnsinro
     logger.info("vnsinro")
     @bookmark = Bookmark.next_inro.first
-    @user_visit = UserVisit.new(user_id: 1, visit_timestamp: Time.now, bookmark_id: @bookmark.id)
+    @user_visit = UserVisit.new(user_id: current_user.id, visit_timestamp: Time.now, bookmark_id: @bookmark.id)
     @user_visit.save
     redirect_to @bookmark.url
   end
