@@ -13,10 +13,11 @@
   <body>
     <div class="banner">
       <div class="banner_right">
+        <% random = rand(1000..2000000)     %>
         <%= link_to "My bookmarks", bookmarks_path, class: "header" %>
         <%= link_to "Next in rotation", specials_vnsinro_path, target: "new", class: "header" %>
         <%= link_to "Show In-Rotation", specials_showinro_path, class: "header" %>
-        <%= link_to "Random Bookmark", specials_random_path, class: "header" %>
+        <%= link_to "Random Bookmark", "/specials/random?#{random}", class: "header" %>
         <%= link_to "Post a site", new_bookmark_path, class: "header" %>
         <%= link_to("Logout", destroy_user_session_path, method: :delete, class: "header") %>
 
