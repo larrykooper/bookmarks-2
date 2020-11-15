@@ -45,7 +45,7 @@ class SpecialsController < ApplicationController
 
     def sort_column
       if !params[:sortkey]
-        :orig_posting_time
+        :last_visit
       else
         params[:sortkey].to_sym
       end
