@@ -1,0 +1,22 @@
+<div class="main">
+  <p class="help">
+  <%= @message %>
+</p>
+
+ <%= form_with url: specials_bulktagrename_action_path do |form|     %>
+
+
+    Rename tag:
+
+    <input type="text" name="old_name" required>
+
+    New name:
+
+    <input type="text" name="new_name" required>
+
+    <input type=submit name="rename" value="rename">
+
+
+<% end %>
+
+</div>

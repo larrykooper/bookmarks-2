@@ -129,4 +129,8 @@ class Tag < ApplicationRecord
     end
   end
 
+  def self.bulk_rename(old, new)
+    Tag.where(name: old).update_all(["name = ?", "#{new}"])
+  end
+
 end

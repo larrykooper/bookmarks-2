@@ -2,6 +2,16 @@ class SpecialsController < ApplicationController
   before_action :authenticate_user!
   helper_method :sort_column, :sort_direction
 
+  def bulktagrename
+    @message = "Bulk Tag Rename"
+  end
+
+  def bulktagrename_action
+    Tag.bulk_rename(params[:old_name], params[:new_name])
+    redirect_to bookmarks_path, notice: 'Tag was successfully renamed.'
+
+  end
+
   def vnsinro
     logger.info("vnsinro")
     @bookmark = Bookmark.next_inro.first

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get "/specials/showinro"
   get "/specials/random"
   get "/specials/refreshtags"
+  get "/specials/bulktagrename"
   get "/tags/index"
+  post "/specials/bulktagrename_action", to: 'specials#bulktagrename_action'
 
 end
