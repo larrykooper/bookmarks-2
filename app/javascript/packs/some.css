@@ -60,6 +60,10 @@ a.header:hover {
   padding-left: 10px;
 }
 
+.notice {
+  margin-left: 21px;
+}
+
 /* TAGS SIDEBAR     */
 
 div.tags_sidebar {

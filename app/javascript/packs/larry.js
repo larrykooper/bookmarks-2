@@ -1,5 +1,3 @@
-console.log("I am here in larry.js")
-
 // REGISTER EVENT LISTENERS
 
 // Letting user delete a bookmark, but forcing them to confirm
@@ -65,15 +63,12 @@ function handleAjaxError(jqXHR, textStatus, errorThrown) {
 // "ARE YOU SURE YOU WANT TO DELETE?"
 
 function confirmAndDelete(event) {
-  var conf, result, theform;
-  console.log("in confirmAndDelete");
+  var result, theform;
   theform = $(".edit_bookmark")[0]
   result = confirm("Are you sure?");
   if (result) {
-    console.log("You clicked OK button!");
     theform.submit();
   } else {
-    console.log("You clicked Cancel button!");
     $(".notice").text("Bookmark was not deleted.");
   }
 }
