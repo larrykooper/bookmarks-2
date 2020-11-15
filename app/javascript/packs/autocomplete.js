@@ -6,12 +6,12 @@ $(document).on('turbolinks:load', function(event) {
   console.log("turbo load");
   if ($("#tagSearch").length) {
 
-    autocomplete(document.getElementById("tagSearch"), "/tags/index");
+    autocomplete(document.getElementById("tagSearch"), "/tags/index", document.getElementById("tagEntry"));
 
   }
 });
 
-function autocomplete(inp, source) {
+function autocomplete(inp, source, dest) {
   console.log("in func autocomplete");
 
   /*the autocomplete function takes two arguments,
@@ -101,6 +101,7 @@ function autocomplete(inp, source) {
 
 function putUpChoices(data) {
   console.log("in putUpChoices");
+  var chosen;
   var val = window.val;
   var a = window.a;
   for (i = 0; i < data.length; i++) {
@@ -113,12 +114,14 @@ function putUpChoices(data) {
     /*insert a input field that will hold the current array item's value:*/
     b.innerHTML += "<input type='hidden' value='" + data[i] + "'>";
     /*execute a function when someone clicks on the item value (DIV element):*/
-        b.addEventListener("click", function(e) {
-        /*insert the value for the autocomplete text field:*/
-        inp.value = this.getElementsByTagName("input")[0].value;
-        /*close the list of autocompleted values,
-        (or any other open lists of autocompleted values:*/
-        closeAllLists();
+    b.addEventListener("click", function(e) {
+      chosen = this.getElementsByTagName("input")[0].value;
+      /*insert the value for the autocomplete text field:*/
+      inp.value = chosen;
+      dest.value += (" " + chosen);
+      /*close the list of autocompleted values,
+      (or any other open lists of autocompleted values:*/
+      closeAllLists();
     });
     a.appendChild(b);
   }
