@@ -23,7 +23,7 @@
 
   <!--one bookmark -->
     <tr class="bookmark">
-      <td class="bookmark_name"><%= link_to @bookmark.name, bookmark_path(@bookmark), remote: true, :class => "fat_link" %></td>
+      <td class="bookmark_name"><%= link_to @bookmark.name, bookmark_path(@bookmark), target: "new", :class => "fat_link" %></td>
       <td class="posting_date"><%= @bookmark.orig_posting_time.to_formatted_s(:ymd) %></td>
       <td class="last_visited"><%= @bookmark.last_visit.to_formatted_s(:ymd) if @bookmark.last_visit %></td>
       <td class="total_visits"><%= @bookmark.total_visits %></td>
