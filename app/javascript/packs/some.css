@@ -550,7 +550,6 @@ legend {
   margin-bottom: 5px;
   box-sizing: border-box;
   background-color: #f1f1f1;
-  padding: 10px;
 }
 
 label > span {
@@ -585,3 +584,25 @@ label > span {
   margin-left: 11%;
 }
 
+/* BULK TAG RENAME  */
+
+.tag_rename label {
+  color: #617d24;
+  font-weight: bold;
+  padding: 2px;
+}
+
+.tag_rename input[type="text"] {
+  margin-bottom: 15px;
+  background-color: #f1f1f1;
+}
+
+.tag_rename label > span {
+  float: left;
+  width: 134px;
+}
+
+.tag_rename input[type="submit"] {
+  margin-left: 139px;
+  margin-top: 10px;
+}
