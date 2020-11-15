@@ -64,6 +64,10 @@ a.header:hover {
   margin-left: 21px;
 }
 
+.prev_next .edge {
+  margin-left: 19px;
+}
+
 /* TAGS SIDEBAR     */
 
 div.tags_sidebar {
