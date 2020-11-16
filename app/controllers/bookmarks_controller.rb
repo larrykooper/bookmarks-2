@@ -54,6 +54,7 @@ class BookmarksController < ApplicationController
 
   def edit
     @bookmark = Bookmark.find(params[:id])
+    @from_where = params[:from]
     @tag_names = @bookmark.tags.map(&:name)
   end
 
@@ -88,8 +89,10 @@ class BookmarksController < ApplicationController
         response = @bookmark.update(bookmark_params) # true if update successful, otherwise false
         Tag.update_tags(@bookmark.id, params[:oldtagstring], params[:tags])
       end
-      if response
+      if response && params[:from_where] == "bookmarks"
         redirect_to bookmarks_path, notice: 'Bookmark was successfully updated.'
+      elsif response && params[:from_where] == "in_rotation"
+        redirect_to specials_showinro_path, notice: 'Bookmark was successfully updated.'
       else
         render :edit
       end

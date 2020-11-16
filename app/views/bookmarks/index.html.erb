@@ -16,7 +16,9 @@
 
       <% @bookmarks.each do |bookmark| %>
 
-        <%= render partial: "bookmarks/bookmark", locals: {bookmark: bookmark} %>
+        <%= render partial: "bookmarks/bookmark", locals: {
+          bookmark: bookmark,
+          displaying: @displaying } %>
 
       <% end %>
     </tbody>

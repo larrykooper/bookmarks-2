@@ -1,4 +1,5 @@
  <%= form_for bookmark, url: action_url, id: "edit_bookmark" do |form| %>
+   <input type="hidden" name="from_where" value="<%= from_where %>">
 
   <div class="row">
     <div class="column">
