@@ -65,6 +65,7 @@ class Bookmark < ApplicationRecord
         b.extended_desc,
         b.orig_posting_time
       ORDER BY #{sort_column} #{sort_direction}
+      NULLS LAST
       LIMIT #{per_page}
       OFFSET #{offset}
     SQL
@@ -135,6 +136,7 @@ class Bookmark < ApplicationRecord
       GROUP BY b.id, b.url, b.name, b.extended_desc,
           b.orig_posting_time
       ORDER BY #{sort_column} #{sort_direction}
+      NULLS LAST
       LIMIT #{per_page}
       OFFSET #{offset}
     SQL
