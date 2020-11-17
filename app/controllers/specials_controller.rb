@@ -25,10 +25,17 @@ class SpecialsController < ApplicationController
     @sortkey = sort_column
     @direction = sort_direction
     @start = params[:start] || 0
-    @bookmarks = Bookmark.paginated_inrotation(@per_page, @start, @sortkey, @direction)
-    @total_rows = Bookmark.where("in_rotation").count
-    @tags = Tag.tags_in_rotation("LOWER(t.name)")
-    @message = "You are now viewing your in-rotation bookmarks."
+    if params[:tags]
+      @tag_id = params[:tags]
+      @bookmarks = Bookmark.pag_inrotation_by_tag(@tag_id, @per_page, @start, @sortkey, @direction)
+      @total_rows = Bookmark.count_inro_with_tag(@tag_id)
+      tag_name = Tag.find(@tag_id).name
+      @message = "In rotation: Tag: #{tag_name} "
+    else
+      @bookmarks = Bookmark.paginated_inrotation(@per_page, @start, @sortkey, @direction)
+      @total_rows = Bookmark.where("in_rotation").count
+      @message = "You are now viewing your in-rotation bookmarks."
+    end
     @displaying = "in_rotation"
     render 'bookmarks/index'
   end

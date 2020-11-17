@@ -82,12 +82,12 @@ class Bookmark < ApplicationRecord
     )
     offset = start
     sql = <<-SQL
-    WITH bm_with_tag AS (
-      SELECT bookmark_id
-      FROM bookmarks_tags
-      WHERE tag_id = #{tag_id}
+      WITH bm_with_tag AS (
+        SELECT bookmark_id
+        FROM bookmarks_tags
+        WHERE tag_id = #{tag_id}
       )
-    SELECT
+      SELECT
         b.id,
         b.url,
         b.name,
@@ -141,6 +141,58 @@ class Bookmark < ApplicationRecord
       OFFSET #{offset}
     SQL
     Bookmark.find_by_sql(sql)
+  end
+
+  def self.pag_inrotation_by_tag(
+    tag_id,
+    per_page,
+    start,
+    sort_column,
+    sort_direction
+    )
+    offset = start
+    sql = <<-SQL
+      WITH bm_with_tag AS (
+        SELECT bookmark_id
+        FROM bookmarks_tags
+        WHERE tag_id = #{tag_id}
+      )
+      SELECT
+        b.id,
+        b.url,
+        b.name,
+        b.extended_desc,
+        b.orig_posting_time,
+        b.in_rotation,
+        b.private,
+        MAX(uv.visit_timestamp) AS last_visit,
+        COUNT(uv.visit_timestamp) AS total_visits
+      FROM bookmarks b
+      INNER JOIN bm_with_tag t
+      ON t.bookmark_id = b.id
+      LEFT JOIN user_visits uv
+      ON uv.bookmark_id = b.id
+      WHERE b.in_rotation
+      GROUP BY b.id, b.url, b.name, b.extended_desc,
+          b.orig_posting_time
+      ORDER BY #{sort_column} #{sort_direction}
+      NULLS LAST
+      LIMIT #{per_page}
+      OFFSET #{offset}
+    SQL
+    Bookmark.find_by_sql(sql)
+  end
+
+  def self.count_inro_with_tag(tag_id)
+    sql = <<-SQL
+      SELECT COUNT(*)
+      FROM bookmarks b
+      INNER JOIN bookmarks_tags bt
+      ON b.id = bt.bookmark_id
+      WHERE b.in_rotation
+      AND bt.tag_id = #{tag_id}
+    SQL
+    Bookmark.count_by_sql(sql)
   end
 
   def self.next_inro

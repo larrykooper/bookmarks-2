@@ -14,11 +14,7 @@ document.addEventListener("turbolinks:load", function() {
   if ($ts.length) {
     // tags_sidebar is there
     console.log("tags_sidebar is there");
-    if ($ts.hasClass("in_rotation")) {
-      page = "in_rotation";
-    } else {
-      page = "bookmarks";
-    }
+    page = ($ts.hasClass("in_rotation")) ? "in_rotation" : "bookmarks";
     getTags(orderWanted, page)
   }
 })
@@ -37,17 +33,13 @@ function displayTagsInResponseToClick(event) {
   otherElem.addClass("bolder");
   // Figure out which page called us
   parent = orderElem.closest(".tags_sidebar");
-
-  if (parent.hasClass("in_rotation")) {
-    page = "in_rotation";
-  } else {
-    page = "bookmarks";
-  }
+  page = (parent.hasClass("in_rotation")) ? "in_rotation" : "bookmarks";
   getTags(orderWanted, page);
 
 }
 
 function getTags(orderWanted, page) {
+  window.page = page;
   // Ajax call
   $.ajax({
     url: "/specials/refreshtags",
@@ -61,8 +53,10 @@ function getTags(orderWanted, page) {
 }
 
 function putTagsInHtml(data) {
-  var count, id, name, i, oneTag, oneTagHtml;
+  var count, id, name, i, link, oneTag, oneTagHtml;
+  var page = window.page;
   var place = $("#all-the-tags");
+  link = (page == "bookmarks") ? "bookmarks" : "showinro"
   place.html("")
   for (i = 0; i < data.length; i++) {
     count = data[i].count;
@@ -71,7 +65,7 @@ function putTagsInHtml(data) {
     var oneTagHtml = `
       <div class="tag">
         ${count}
-        <a href="bookmarks?tags=${id}">${name}</a>
+        <a href="${link}?tags=${id}">${name}</a>
       </div>
     `;
     place.append(oneTagHtml);
