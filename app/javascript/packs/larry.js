@@ -4,11 +4,28 @@
 $(document).on("click", ".delete_button_span", confirmAndDelete);
 
 // Sorting the tags in the sidebar when the user asks for it
-$(document).on("click", ".sorter", sortTagsServerSide);
+$(document).on("click", ".sorter", displayTagsInResponseToClick);
 
-// SORTING THE TAGS
+// Show the tags in sidebar with JS on page load
+document.addEventListener("turbolinks:load", function() {
+  var orderWanted, page, $ts;
+  orderWanted = "alpha";
+  $ts = $(".tags_sidebar");
+  if ($ts.length) {
+    // tags_sidebar is there
+    console.log("tags_sidebar is there");
+    if ($ts.hasClass("in_rotation")) {
+      page = "in_rotation";
+    } else {
+      page = "bookmarks";
+    }
+    getTags(orderWanted, page)
+  }
+})
 
-function sortTagsServerSide(event) {
+// SORTING THE TAGS IN SIDEBAR
+
+function displayTagsInResponseToClick(event) {
   var alphaElem, freqElem, orderElem, orderWanted, otherElem, page, parent;
   // Figure out which sort order should be bolded
   alphaElem = $("#alpha");
@@ -26,6 +43,11 @@ function sortTagsServerSide(event) {
   } else {
     page = "bookmarks";
   }
+  getTags(orderWanted, page);
+
+}
+
+function getTags(orderWanted, page) {
   // Ajax call
   $.ajax({
     url: "/specials/refreshtags",

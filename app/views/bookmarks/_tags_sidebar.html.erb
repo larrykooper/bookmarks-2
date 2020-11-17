@@ -6,11 +6,6 @@
 
   </div>
   <div id="all-the-tags">
-    <% @tags.each do |tag| %>
-      <div class="tag">
-        <%= tag.count %>
-        <%= link_to tag.name, bookmarks_path(:tags => tag.id) %>
-      </div>
-    <% end %>
+
   </div>
 </div>
