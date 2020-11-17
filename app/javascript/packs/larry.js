@@ -6,7 +6,7 @@ $(document).on("click", ".delete_button_span", confirmAndDelete);
 // Sorting the tags in the sidebar when the user asks for it
 $(document).on("click", ".sorter", sortTagsServerSide);
 
-// SORTING THE TAGS
+// SORTING THE TAGS IN SIDEBAR
 
 function sortTagsServerSide(event) {
   var alphaElem, freqElem, orderElem, orderWanted, otherElem, page, parent;
