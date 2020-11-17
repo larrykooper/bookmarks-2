@@ -30,7 +30,6 @@ class BookmarksController < ApplicationController
       @displaying = "bookmarks"
       @message = "Welcome, stormville."
     end
-    @tags = Tag.all_tags("LOWER(name)")
   end
 
   def show
