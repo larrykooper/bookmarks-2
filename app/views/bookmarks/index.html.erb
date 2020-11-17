@@ -1,6 +1,8 @@
 <%= render "bookmarks/tags_sidebar" %>
 
-<%= render "bookmarks/pagination" %>
+<%= render partial: "bookmarks/pagination", locals: {
+   sortkey: @sortkey,
+   direction: @direction } %>
 
 <%= render "shared/notice_alert" %>
 

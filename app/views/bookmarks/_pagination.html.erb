@@ -2,8 +2,8 @@
   <!-- previous -->
   <% unless @start.to_i == 0   %>
     <% newstart = @start.to_i - @per_page  %>
-    <%= link_to "< previous", bookmarks_path(start: newstart), :class => "rt" if @displaying == "bookmarks" %>
-    <%= link_to "< previous", specials_showinro_path(start: newstart), :class => "rt" if @displaying == "in_rotation" %>
+    <%= link_to "< previous", bookmarks_path(start: newstart, sortkey: sortkey, direction: direction), :class => "rt" if @displaying == "bookmarks" %>
+    <%= link_to "< previous", specials_showinro_path(start: newstart, sortkey: sortkey, direction: direction), :class => "rt" if @displaying == "in_rotation" %>
     <%= link_to "< previous", bookmarks_path(start: newstart, tags: @tag_id), :class => "rt" if @displaying == "tag_filter" %>
   <% end %>
 
@@ -17,8 +17,8 @@
   <span class="<%= edge %>">
     <% if ((@start.to_i + @per_page) < @total_rows)  %>
       <% newstart = @start.to_i + @per_page  %>
-      <%= link_to "next >", bookmarks_path(start: newstart), :class => "fat_link" if @displaying == "bookmarks" %>
-      <%= link_to "next >", specials_showinro_path(start: newstart), :class => "fat_link" if @displaying == "in_rotation" %>
+      <%= link_to "next >", bookmarks_path(start: newstart, sortkey: sortkey, direction: direction), :class => "fat_link" if @displaying == "bookmarks" %>
+      <%= link_to "next >", specials_showinro_path(start: newstart, sortkey: sortkey, direction: direction), :class => "fat_link" if @displaying == "in_rotation" %>
       <%= link_to "next >", bookmarks_path(start: newstart, tags: @tag_id), :class => "fat_link" if @displaying == "tag_filter" %>
     <% end %>
   </span>
