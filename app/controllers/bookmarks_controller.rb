@@ -77,6 +77,7 @@ class BookmarksController < ApplicationController
       @previous_post = Bookmark.find(existing)
       @previous_tag_names = @previous_post.tags.map(&:name)
       @new_tag_names = params[:tags].split
+      @from_where = "fix_a_posting"
       render "fix_a_posting"
     end
   end
@@ -88,7 +89,7 @@ class BookmarksController < ApplicationController
         response = @bookmark.update(bookmark_params) # true if update successful, otherwise false
         Tag.update_tags(@bookmark.id, params[:oldtagstring], params[:tags])
       end
-      if response && params[:from_where] == "bookmarks"
+      if response && (params[:from_where] == "bookmarks" || params[:from_where] == "fix_a_posting")
         redirect_to bookmarks_path, notice: 'Bookmark was successfully updated.'
       elsif response && params[:from_where] == "in_rotation"
         redirect_to specials_showinro_path, notice: 'Bookmark was successfully updated.'

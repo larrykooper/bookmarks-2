@@ -15,7 +15,8 @@
       from: "fix_a_posting",
       button_text: "save previous",
       button_name: "save_previous",
-      action_url: "/bookmarks/#{@previous_post.id}"
+      action_url: "/bookmarks/#{@previous_post.id}",
+      from_where: @from_where
     } %>
 
  </fieldset>
@@ -31,7 +32,8 @@
       from: "fix_a_posting",
       button_text: "save new",
       button_name: "save_new",
-      action_url: "/bookmarks/#{@previous_post.id}"
+      action_url: "/bookmarks/#{@previous_post.id}",
+      from_where: @from_where
     } %>
   </fieldset>
 
