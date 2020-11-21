@@ -11,6 +11,7 @@
 
     <%= render partial: "editform", locals: {
       tag_names: @previous_tag_names,
+      old_tags: @previous_tag_names,
       bookmark: @previous_post,
       from: "fix_a_posting",
       button_text: "save previous",
@@ -28,6 +29,7 @@
 
      <%= render partial: "editform", locals: {
       tag_names: @new_tag_names,
+      old_tags: @previous_tag_names,
       bookmark: @bookmark,
       from: "fix_a_posting",
       button_text: "save new",
