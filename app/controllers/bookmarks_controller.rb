@@ -84,12 +84,14 @@ class BookmarksController < ApplicationController
 
   def update
     @bookmark = Bookmark.find(params[:id])
+    # from_where's we redirect to bookmarks
+    bookmarks_redir = ["bookmarks", "fix_a_posting", "tag_filter", "random"]
     if params[:save_it] == "save" || params[:save_previous] == "save previous" || params[:save_new] == "save new"
       ActiveRecord::Base.transaction do
         response = @bookmark.update(bookmark_params) # true if update successful, otherwise false
         Tag.update_tags(@bookmark.id, params[:oldtagstring], params[:tags])
       end
-      if response && (params[:from_where] == "bookmarks" || params[:from_where] == "fix_a_posting")
+      if response && (bookmarks_redir.include?(params[:from_where]))
         redirect_to bookmarks_path, notice: 'Bookmark was successfully updated.'
       elsif response && params[:from_where] == "in_rotation"
         redirect_to specials_showinro_path, notice: 'Bookmark was successfully updated.'
