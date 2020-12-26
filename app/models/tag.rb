@@ -129,8 +129,25 @@ class Tag < ApplicationRecord
     end
   end
 
-  def self.bulk_rename(old, new)
-    Tag.where(name: old).update_all(["name = ?", "#{new}"])
+  # Return true if OK, false if error condition
+  def self.bulk_rename(oldname, newname)
+    # Check for error - can't rename if tag not there
+    old_tag = Tag.where(name: oldname)
+    if old_tag.empty?
+      return false
+    end
+    # Create a new one to see if name exists
+    tag = Tag.new(name: newname)
+    new_tag_id = tag.name_already_in_db
+    old_tag_id = old_tag.first.id
+    # If the "new" tag is already in the database, we just change bookmarks_tags
+    if new_tag_id
+      BookmarksTag.where(tag_id: old_tag_id).update_all(["tag_id = ?", "#{new_tag_id}"])
+    else
+      # New tag doesn't exist, so just rename the old
+      Tag.where(name: oldname).update_all(["name = ?", "#{newname}"])
+    end
+    return true
   end
 
 end

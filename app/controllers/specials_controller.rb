@@ -7,9 +7,13 @@ class SpecialsController < ApplicationController
   end
 
   def bulktagrename_action
-    Tag.bulk_rename(params[:old_name], params[:new_name])
-    redirect_to bookmarks_path, notice: 'Tag was successfully renamed.'
-
+    success = Tag.bulk_rename(params[:old_name].strip, params[:new_name].strip)
+    if success
+      notice = 'Tag was successfully renamed.'
+    else
+      notice = "Old tag #{params[:old_name].strip} not there, can't rename"
+    end
+    redirect_to bookmarks_path, notice: notice
   end
 
   def vnsinro
