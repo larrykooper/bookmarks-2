@@ -204,6 +204,8 @@ class Bookmark < ApplicationRecord
       WHERE in_rotation
       GROUP BY b.id
       ORDER BY the_time
+      NULLS FIRST
+      LIMIT 1
     SQL
     Bookmark.find_by_sql(sql)
   end
