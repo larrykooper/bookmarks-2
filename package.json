@@ -1,13 +1,15 @@
 {
   "name": "bookmarks_2",
   "private": true,
-"dependencies": {
+  "dependencies": {
     "@babel/core": "7",
     "@babel/plugin-transform-runtime": "7",
     "@babel/preset-env": "7",
     "@babel/runtime": "7",
+    "@hotwired/stimulus": "^3.2.1",
     "babel-loader": "8",
     "compression-webpack-plugin": "9",
+    "esbuild": "^0.17.18",
     "shakapacker": "6.5.0",
     "terser-webpack-plugin": "5",
     "webpack": "5",
@@ -24,5 +26,8 @@
   },
   "browserslist": [
     "defaults"
-  ]
+  ],
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+  }
 }
