@@ -9,7 +9,6 @@
     "@hotwired/stimulus": "^3.2.1",
     "babel-loader": "8",
     "compression-webpack-plugin": "9",
-    "esbuild": "^0.17.18",
     "shakapacker": "6.5.0",
     "terser-webpack-plugin": "5",
     "webpack": "5",
@@ -27,8 +26,10 @@
   "browserslist": [
     "defaults"
   ],
-   "scripts": {
+  "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --tsconfig=./tsconfig.json --sourcemap --outdir=app/assets/builds --public-path=assets"
+  },
+  "devDependencies": {
+    "esbuild": "0.19.11"
   }
-
 }
