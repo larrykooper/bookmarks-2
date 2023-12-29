@@ -10,8 +10,8 @@
 // require("channels")
 // require("packs/larry.js")
 // require("packs/autocomplete.js")
-require("larry.js")
-require("autocomplete.js")
+require("./larry.js")
+require("./autocomplete.js")
 
 
 require.context('../images', true)
