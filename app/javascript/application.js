@@ -26,7 +26,7 @@ const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
 
-import('./application.css')
+import('./stylesheets/application.css')
 import('./some')
 import('./autocomp')
 
