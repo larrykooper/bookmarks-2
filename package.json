@@ -28,6 +28,6 @@
     "defaults"
   ],
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --tsconfig=./tsconfig.json --sourcemap --outdir=app/assets/builds --public-path=assets"
+    "build": "esbuild app/javascript/*.* --bundle --external:'images/*' --tsconfig=./tsconfig.json --sourcemap --outdir=app/assets/builds --public-path=assets"
   }
 }
