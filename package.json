@@ -26,9 +26,5 @@
   },
   "browserslist": [
     "defaults"
-  ],
-  "scripts": {
-    "externalDependencies": ["images/*"],
-    "build": "esbuild app/javascript/*.* --bundle --tsconfig=./tsconfig.json --sourcemap --outdir=app/assets/builds --public-path=assets"
-  }
+  ]
 }
