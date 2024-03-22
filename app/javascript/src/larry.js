@@ -16,7 +16,6 @@ for (var i = 0; i < sorters.length; i++) {
 
 // Show the tags in sidebar with JS on page load
 window.addEventListener("load", function() {
-  console.log("in onload function about sidebar");
   var orderWanted, page;
   orderWanted = "alpha";
   const ts = document.querySelector(".tags_sidebar");

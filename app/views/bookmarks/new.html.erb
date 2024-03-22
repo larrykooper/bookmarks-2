@@ -69,9 +69,42 @@
   </fieldset>
 
   <!-- AUTOCOMPLETE FOR TAGS   -->
-  <div id="searchTags" class="autocomplete">
-    Search tags:
-    <input id="tagSearch" type="text" name="tagSearch" placeholder="tag">
-    (beginning of tag only)
-  </div>
+Search tags: (beginning of tag)
+  <form autocomplete="off">
+    <input type="text" name="q" id="q" onKeyUp="showResults(this.value)" />
+  <div id="result"></div>
+  </form>
+
 </div>
+
+<script>
+function showResults(val) {
+  var dest = document.getElementById("tagEntry");
+  res = document.getElementById("result");
+  res.innerHTML = '';
+  if (val == '') {
+    return;
+  }
+  fetch('/tags/index?q=' + val).then(
+    function (response) {
+      return response.json();
+    }).then(function (data) {
+      myul = document.createElement("ul");
+      for (i=0; i<data.length; i++) {
+        var li_el = document.createElement("li");
+        li_el.innerHTML = data[i];
+        li_el.addEventListener("click", function(e) {
+          chosen = this.innerHTML;
+          dest.value += (" " + chosen);
+        });
+        myul.appendChild(li_el)
+      }
+      res.appendChild(myul);
+      return true;
+    }).catch(function (err) {
+     console.warn('Something went wrong.', err);
+     return false;
+    });
+}
+
+  </script>
