@@ -9,13 +9,12 @@
 // });
 
 // Sorting the tags in the sidebar when the user asks for it
-const sorter = document.querySelector(".sorter");
-
-if (sorter) {
-  sorter.addEventListener("click", (event) => {
-    displayTagsInResponseToClick;
-  });
+var sorters = document.getElementsByClassName("sorter");
+for (var i = 0; i < sorters.length; i++) {
+    sorters[i].addEventListener('click', displayTagsInResponseToClick);
 }
+
+
 
 // Show the tags in sidebar with JS on page load
 window.onload = function() {
@@ -34,7 +33,6 @@ window.onload = function() {
         page = "bookmarks";
     }
     var tags = getTagsFetch(orderWanted, page);
-    putTagsInHtml(tags);
 
   }
 };
@@ -44,17 +42,17 @@ window.onload = function() {
 function displayTagsInResponseToClick(event) {
   var alphaElem, freqElem, orderElem, orderWanted, otherElem, page, parent;
   // Figure out which sort order should be bolded
-  alphaElem = $("#alpha");
-  freqElem = $("#freq");
-  orderElem = $(event.target);
-  orderWanted = orderElem.attr("id");
-  orderElem.removeClass("bolder");
+  alphaElem = document.getElementById("alpha");
+  freqElem = document.getElementById("freq");
+  orderElem = event.target;
+  orderWanted = orderElem.getAttribute("id");
+  orderElem.classList.remove("bolder");
   otherElem = (orderWanted == "alpha" ? freqElem : alphaElem);
-  otherElem.addClass("bolder");
+  otherElem.classList.add("bolder");
   // Figure out which page called us
   parent = orderElem.closest(".tags_sidebar");
-  page = (parent.hasClass("in_rotation")) ? "in_rotation" : "bookmarks";
-  tags = getTagsFetch(orderWanted, page);
+  page = (parent.classList.contains("in_rotation")) ? "in_rotation" : "bookmarks";
+  var tags = getTagsFetch(orderWanted, page);
 
 }
 
