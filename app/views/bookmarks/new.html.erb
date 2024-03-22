@@ -3,7 +3,7 @@
   <fieldset class="chg">
     <legend>Post a site:</legend>
 
-    <%= form_with scope: :bookmark, url: bookmarks_path, local: true, id: "new_bookmark" do |form| %>
+    <%= form_with scope: :bookmark, url: bookmarks_path, id: "new_bookmark" do |form| %>
 
     <% if @bookmark.errors.any?   %>
       Please use a valid URL.
@@ -63,7 +63,7 @@
 
       <input type="hidden" name="submit_type" value="save">
 
-      <input type=image src="<%= asset_pack_path 'media/images/save.jpg' %>" name="submit" class="save_new_button" >
+      <%= form.submit %>
 
     <% end %>
   </fieldset>

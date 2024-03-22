@@ -1,23 +1,45 @@
 // REGISTER EVENT LISTENERS
 
 // Letting user delete a bookmark, but forcing them to confirm
-$(document).on("click", ".delete_button_span", confirmAndDelete);
+//  We only want to execute this when the delete button is on screen
+// const dbs = document.querySelector(".delete_button_span");
+
+// dbs.addEventListener("click", (event) => {
+//   confirmAndDelete;
+// });
 
 // Sorting the tags in the sidebar when the user asks for it
-$(document).on("click", ".sorter", displayTagsInResponseToClick);
+const sorter = document.querySelector(".sorter");
+
+if (sorter) {
+  sorter.addEventListener("click", (event) => {
+    displayTagsInResponseToClick;
+  });
+}
 
 // Show the tags in sidebar with JS on page load
-document.addEventListener("turbolinks:load", function() {
+window.onload = function() {
+  console.log("I am in onload function")
   var orderWanted, page, $ts;
   orderWanted = "alpha";
-  $ts = $(".tags_sidebar");
-  if ($ts.length) {
+  const ts = document.querySelector(".tags_sidebar");
+  if (ts) {
     // tags_sidebar is there
     console.log("tags_sidebar is there");
-    page = ($ts.hasClass("in_rotation")) ? "in_rotation" : "bookmarks";
-    getTags(orderWanted, page)
+    let isInroPresent = ts.classList.contains("in_rotation");
+    let page = "";
+    if (isInroPresent) {
+        console.log("inro is present");
+        page = "in_rotation";
+    } else {
+        console.log("inro is NOT present");
+        page = "bookmarks";
+    }
+    tags = getTagsFetch(orderWanted, page);
+    putTagsInHtml(tags);
+    //console.log(tags);
   }
-})
+};
 
 // SORTING THE TAGS IN SIDEBAR
 
@@ -34,28 +56,44 @@ function displayTagsInResponseToClick(event) {
   // Figure out which page called us
   parent = orderElem.closest(".tags_sidebar");
   page = (parent.hasClass("in_rotation")) ? "in_rotation" : "bookmarks";
-  getTags(orderWanted, page);
+  tags = getTagsFetch(orderWanted, page);
 
 }
 
-function getTags(orderWanted, page) {
+async function getTagsFetch(orderWanted, page) {
   window.page = page;
-  // Ajax call
-  $.ajax({
-    url: "/specials/refreshtags",
-    data: {
-      settagsort: orderWanted,
-      page: page
-    },
-    success: putTagsInHtml,
-    error: handleAjaxError
+  url = "/specials/refreshtags?" + new URLSearchParams({
+    settagsort: orderWanted,
+    page: page
   });
+
+  const response = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return response.json()
 }
+
+// function getTags(orderWanted, page) {
+//   window.page = page;
+//   // Ajax call
+//   $.ajax({
+//     url: "/specials/refreshtags",
+//     data: {
+//       settagsort: orderWanted,
+//       page: page
+//     },
+//     success: putTagsInHtml,
+//     error: handleAjaxError
+//   });
+// }
+//
 
 function putTagsInHtml(data) {
   var count, id, name, i, link, oneTag, oneTagHtml;
   var page = window.page;
-  var place = $("#all-the-tags");
+  const place = document.querySelector("#all-the-tags");
   link = (page == "bookmarks") ? "bookmarks" : "showinro"
   place.html("")
   for (i = 0; i < data.length; i++) {

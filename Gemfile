@@ -57,3 +57,4 @@ end
 
 gem 'jsbundling-rails'
 gem 'stimulus-rails'
+gem "importmap-rails", "~> 2.0"

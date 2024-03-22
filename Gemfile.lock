@@ -98,6 +98,10 @@ GEM
       activesupport (>= 5.0)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
+    importmap-rails (2.0.1)
+      actionpack (>= 6.0.0)
+      activesupport (>= 6.0.0)
+      railties (>= 6.0.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -243,6 +247,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   devise
   globalid (~> 1.0)
+  importmap-rails (~> 2.0)
   jbuilder (~> 2.7)
   jsbundling-rails
   pg
