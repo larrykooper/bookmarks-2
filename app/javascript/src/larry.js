@@ -2,11 +2,11 @@
 
 // Letting user delete a bookmark, but forcing them to confirm
 //  We only want to execute this when the delete button is on screen
-// const dbs = document.querySelector(".delete_button_span");
+const dbs = document.querySelector(".delete_button_span");
 
-// dbs.addEventListener("click", (event) => {
-//   confirmAndDelete;
-// });
+if (dbs) {
+  dbs.addEventListener('click', confirmAndDelete);
+}
 
 // Sorting the tags in the sidebar when the user asks for it
 var sorters = document.getElementsByClassName("sorter");
@@ -14,17 +14,14 @@ for (var i = 0; i < sorters.length; i++) {
     sorters[i].addEventListener('click', displayTagsInResponseToClick);
 }
 
-
-
 // Show the tags in sidebar with JS on page load
-window.onload = function() {
-  console.log("I am in onload function");
-  var orderWanted, page, $ts;
+window.addEventListener("load", function() {
+  console.log("in onload function about sidebar");
+  var orderWanted, page;
   orderWanted = "alpha";
   const ts = document.querySelector(".tags_sidebar");
   if (ts) {
     // tags_sidebar is there
-    console.log("tags_sidebar is there");
     let isInroPresent = ts.classList.contains("in_rotation");
     let page = "";
     if (isInroPresent) {
@@ -33,9 +30,8 @@ window.onload = function() {
         page = "bookmarks";
     }
     var tags = getTagsFetch(orderWanted, page);
-
   }
-};
+});
 
 // SORTING THE TAGS IN SIDEBAR
 
@@ -126,12 +122,13 @@ function handleAjaxError(jqXHR, textStatus, errorThrown) {
 // "ARE YOU SURE YOU WANT TO DELETE?"
 
 function confirmAndDelete(event) {
-  var result, theform;
-  theform = $(".edit_bookmark")[0]
+  var result;
+  const theform = document.getElementsByClassName("edit_bookmark")[0];
   result = confirm("Are you sure?");
   if (result) {
     theform.submit();
   } else {
-    $(".notice").text("Bookmark was not deleted.");
+    const notice = document.getElementsByClassName("notice")[0];
+    notice.innerHTML = "Bookmark was not deleted.";
   }
 }
