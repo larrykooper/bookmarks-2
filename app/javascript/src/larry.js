@@ -19,7 +19,7 @@ if (sorter) {
 
 // Show the tags in sidebar with JS on page load
 window.onload = function() {
-  console.log("I am in onload function")
+  console.log("I am in onload function");
   var orderWanted, page, $ts;
   orderWanted = "alpha";
   const ts = document.querySelector(".tags_sidebar");
@@ -29,15 +29,13 @@ window.onload = function() {
     let isInroPresent = ts.classList.contains("in_rotation");
     let page = "";
     if (isInroPresent) {
-        console.log("inro is present");
         page = "in_rotation";
     } else {
-        console.log("inro is NOT present");
         page = "bookmarks";
     }
-    tags = getTagsFetch(orderWanted, page);
+    var tags = getTagsFetch(orderWanted, page);
     putTagsInHtml(tags);
-    //console.log(tags);
+
   }
 };
 
@@ -60,19 +58,32 @@ function displayTagsInResponseToClick(event) {
 
 }
 
-async function getTagsFetch(orderWanted, page) {
+function getTagsFetch(orderWanted, page) {
   window.page = page;
-  url = "/specials/refreshtags?" + new URLSearchParams({
+  var url = "/specials/refreshtags?" + new URLSearchParams({
     settagsort: orderWanted,
     page: page
   });
 
-  const response = await fetch(url, {
+  fetch(url, {
     headers: {
       "Content-Type": "application/json",
     },
-  });
-  return response.json()
+  })
+    .then(function(serverPromise){
+      serverPromise.json()
+        .then(function(j) {
+          putTagsInHtml(j);
+        })
+        .catch(function(e){
+          console.log(e);
+        });
+    })
+    .catch(function(e){
+        console.log(e);
+    });
+
+
 }
 
 // function getTags(orderWanted, page) {
@@ -95,7 +106,7 @@ function putTagsInHtml(data) {
   var page = window.page;
   const place = document.querySelector("#all-the-tags");
   link = (page == "bookmarks") ? "bookmarks" : "showinro"
-  place.html("")
+  place.innerHTML = "";
   for (i = 0; i < data.length; i++) {
     count = data[i].count;
     id = data[i].id;
@@ -106,7 +117,7 @@ function putTagsInHtml(data) {
         <a href="${link}?tags=${id}">${name}</a>
       </div>
     `;
-    place.append(oneTagHtml);
+    place.innerHTML += oneTagHtml;
   } // end of for
 }
 
