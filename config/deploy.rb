@@ -13,7 +13,7 @@ set :application_name, 'bookmarks-2'
 set :domain, 'bookmarkslarry.link'
 set :deploy_to, '/usr/local/share/bookmarks-2'
 set :repository, 'git@github.com:larrykooper/bookmarks-2'
-set :branch, 'master'
+set :branch, 'main'
 
 # Optional settings:
 #   set :user, 'foobar'          # Username in the server to SSH to.
