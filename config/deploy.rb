@@ -9,6 +9,10 @@ set :rvm_ruby_version, "ruby-3.1.4"
 set :rvm_custom_path, '/usr/share/rvm'
 set :default_env, { rvm_bin_path: "/usr/share/rvm" }
 
+append :linked_files, "config/database.yml", 'config/master.key', 'config/credentials/production.key'
+
+
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 

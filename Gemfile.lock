@@ -277,7 +277,7 @@ DEPENDENCIES
   bcrypt_pbkdf (>= 1.0, < 2.0)
   bootsnap (>= 1.4.2)
   byebug
-  capistrano (~> 3.17)
+  capistrano (~> 3.18)
   capistrano-passenger (= 0.2.0)
   capistrano-rails (= 1.4.0)
   capistrano-rvm
