@@ -16,7 +16,7 @@ set :repository, 'git@github.com:larrykooper/bookmarks-2'
 set :branch, 'main'
 
 # Optional settings:
-#   set :user, 'foobar'          # Username in the server to SSH to.
+set :user, 'deploy'          # Username in the server to SSH to.
 #   set :port, '30000'           # SSH port number.
 #   set :forward_agent, true     # SSH forward_agent.
 
