@@ -87,6 +87,9 @@ GEM
       capistrano (~> 3.1)
     capistrano-passenger (0.2.0)
       capistrano (~> 3.0)
+    capistrano-postgresql (6.2.0)
+      capistrano (>= 3.0)
+      sshkit (>= 1.17.0)
     capistrano-rails (1.4.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -168,6 +171,9 @@ GEM
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    passenger (6.0.20)
+      rack
+      rake (>= 0.8.1)
     pg (1.5.3)
     psych (3.3.4)
     public_suffix (5.0.1)
@@ -279,6 +285,7 @@ DEPENDENCIES
   byebug
   capistrano (~> 3.18)
   capistrano-passenger (= 0.2.0)
+  capistrano-postgresql (~> 6.2)
   capistrano-rails (= 1.4.0)
   capistrano-rvm
   capistrano-secrets-yml
@@ -290,6 +297,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jsbundling-rails
   listen
+  passenger (>= 5.0.25)
   pg
   psych (< 4)
   puma (~> 4.1)

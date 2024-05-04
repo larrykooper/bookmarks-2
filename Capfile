@@ -10,6 +10,7 @@ require "capistrano/passenger"
 require "capistrano/secrets_yml"
 require "net/scp"
 require "capistrano/rails/migrations"
+require "capistrano/postgresql"
 
 # Load the SCM plugin appropriate to your project:
 #

@@ -11,6 +11,13 @@ set :default_env, { rvm_bin_path: "/usr/share/rvm" }
 
 append :linked_files, "config/database.yml", 'config/master.key', 'config/credentials/production.key'
 
+set :pg_without_sudo, true
+set :pg_host, 'localhost'
+set :pg_database, 'bookmarks_production'
+set :pg_username, 'bookmarks'
+set :pg_ask_for_password, true
+
+set :passenger_restart_with_touch, false
 
 
 # Default branch is :master
